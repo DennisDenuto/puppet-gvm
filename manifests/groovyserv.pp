@@ -13,7 +13,7 @@ define gvm::groovyserv(
   if($default) {
     exec { "set-groovyserv-default":
       command => "bash --login -c 'gvm default groovyserv ${version}'",
-      requires => Exec["install-groovyserv-$version"],
+      require => Exec["install-groovyserv-$version"],
     }
   }
 }

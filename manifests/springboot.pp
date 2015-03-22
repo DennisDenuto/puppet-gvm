@@ -13,7 +13,7 @@ define gvm::springboot(
   if($default) {
     exec { "set-springboot-default":
       command => "bash --login -c 'gvm default springboot ${version}'",
-      requires => Exec["install-springboot-$version"],
+      require => Exec["install-springboot-$version"],
     }
   }
 }

@@ -13,7 +13,7 @@ define gvm::griffon(
   if($default) {
     exec { "set-griffon-default":
       command => "bash --login -c 'gvm default griffon ${version}'",
-      requires => Exec["install-griffon-$version"],
+      require => Exec["install-griffon-$version"],
     }
   }
 }

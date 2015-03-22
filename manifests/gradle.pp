@@ -13,7 +13,7 @@ define gvm::gradle(
   if($default) {
     exec { "set-gradle-default":
       command => "bash --login -c 'gvm default gradle ${version}'",
-      requires => Exec["install-gradle-$version"],
+      require => Exec["install-gradle-$version"],
     }
   }
 }

@@ -13,7 +13,7 @@ define gvm::lazybones(
   if($default) {
     exec { "set-lazybones-default":
       command => "bash --login -c 'gvm default lazybones ${version}'",
-      requires => Exec["install-lazybones-$version"],
+      require => Exec["install-lazybones-$version"],
     }
   }
 }

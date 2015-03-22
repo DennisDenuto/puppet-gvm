@@ -13,7 +13,7 @@ define gvm::gaiden(
   if($default) {
     exec { "set-gaiden-default":
       command => "bash --login -c 'gvm default gaiden ${version}'",
-      requires => Exec["install-gaiden-$version"],
+      require => Exec["install-gaiden-$version"],
     }
   }
 }

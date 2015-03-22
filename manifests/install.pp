@@ -6,11 +6,11 @@ class gvm::install(
   exec { 'selfupdate-gvm':
     command => "bash --login -c 'gvm selfupdate'",
     onlyif  => "test -e /Users/${::boxen_user}/.gvm/etc/config",
+    require => Exec['install-gvm'],
   }
 
   exec { 'install-gvm':
     command => "curl -s get.gvmtool.net | bash",
     creates => "/Users/${::boxen_user}/.gvm/etc/config",
-    require => Exec['selfupdate-gvm'],
   }
 }

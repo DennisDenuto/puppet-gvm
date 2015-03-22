@@ -13,7 +13,7 @@ define gvm::vertx(
   if($default) {
     exec { "set-vertx-default":
       command => "bash --login -c 'gvm default vertx ${version}'",
-      requires => Exec["install-vertx-$version"],
+      require => Exec["install-vertx-$version"],
     }
   }
 }
