@@ -6,13 +6,13 @@ define gvm::vertx(
   require gvm::install
 
   exec { "install-vertx-$version":
-    command => "bash --login -c 'gvm install vertx ${version}'",
+    command => "zsh -c 'source ~/.zshrc;gvm install vertx ${version}'",
     creates => "/Users/${::boxen_user}/.gvm/vertx/${version}"
   }
 
   if($default) {
     exec { "set-vertx-default":
-      command => "bash --login -c 'gvm default vertx ${version}'",
+      command => "zsh -c 'source ~/.zshrc;gvm default vertx ${version}'",
       require => Exec["install-vertx-$version"],
     }
   }

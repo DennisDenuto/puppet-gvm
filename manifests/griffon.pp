@@ -6,13 +6,13 @@ define gvm::griffon(
   require gvm::install
 
   exec { "install-griffon-$version":
-    command => "bash --login -c 'gvm install griffon ${version}'",
+    command => "zsh -c 'source ~/.zshrc;gvm install griffon ${version}'",
     creates => "/Users/${::boxen_user}/.gvm/griffon/${version}"
   }
 
   if($default) {
     exec { "set-griffon-default":
-      command => "bash --login -c 'gvm default griffon ${version}'",
+      command => "zsh -c 'source ~/.zshrc;gvm default griffon ${version}'",
       require => Exec["install-griffon-$version"],
     }
   }

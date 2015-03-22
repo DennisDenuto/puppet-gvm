@@ -4,7 +4,7 @@ class gvm::install(
   $user   = $gvm::install::user,
 ) {
   exec { 'selfupdate-gvm':
-    command => "bash --login -c 'gvm selfupdate'",
+    command => "zsh -c 'source ~/.zshrc;gvm selfupdate'",
     onlyif  => "test -e /Users/${::boxen_user}/.gvm/etc/config",
     require => Exec['install-gvm'],
   }

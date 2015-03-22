@@ -6,13 +6,13 @@ define gvm::gaiden(
   require gvm::install
 
   exec { "install-gaiden-$version":
-    command => "bash --login -c 'gvm install gaiden ${version}'",
+    command => "zsh -c 'source ~/.zshrc;gvm install gaiden ${version}'",
     creates => "/Users/${::boxen_user}/.gvm/gaiden/${version}"
   }
 
   if($default) {
     exec { "set-gaiden-default":
-      command => "bash --login -c 'gvm default gaiden ${version}'",
+      command => "zsh -c 'source ~/.zshrc;gvm default gaiden ${version}'",
       require => Exec["install-gaiden-$version"],
     }
   }
